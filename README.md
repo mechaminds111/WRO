@@ -32,13 +32,16 @@ Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Fut
 The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and 
 completing the parking challenge without human intervention.
 
+### Technical Specifications
+* **Dimensions:** 250mm (Length) x 180 mm (Width) x 150 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
+* **Total Weight:** 1.35 kg — *Under the maximum limit of 1.5 kilograms.*
+
+
+  
+
 ## Vehicle & Mechanical Design
 
-Our vehicle is a custom-engineered autonomous scale-model car designed strictly around the WRO 2026 Future Engineers regulations. The mechanical design balances a low center of gravity with structural stiffness to handle high-speed cornering and precise steering alignments.
-
-### Technical Specifications & Constraints
-* **Dimensions:** 250mm (Length) x 180 mm (Width) x 150 mm (Height) — *Strictly within the maximum allowed 300 x 200 x 300 mm boundary.*
-* **Total Weight:** 1.25 kg — *Well under the maximum limit of 1.5 kilograms, optimizing acceleration and battery longevity.*
+Our vehicle is an autonomous model car according to the WRO 2026 Future Engineers rules. The mechanical design is based on the classic Ford Model T architecture, using a rear-wheel-drive system where a single large LEGO motor provides power to the rear axle, while a single smaller LEGO motor acts as the steering motor to control the front wheels. 
 
 ### Kinematics & Drivetrain Architecture
 * **Steering Actuation:** We used a single LEGO steering motor configured with a physical geometry (Ackermann steering concept) to manage turning angles. This provides smooth traction and prevents the tires from slipping sideways during tight cornering.
