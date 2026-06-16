@@ -32,20 +32,17 @@ Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Fut
 The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and 
 completing the parking challenge without human intervention.
 
-### Technical Specifications
-* **Dimensions:** 250mm (Length) x 180 mm (Width) x 150 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
-* **Total Weight:** 1.35 kg — *Under the maximum limit of 1.5 kilograms.*
-
-
-  
-
 ## Vehicle & Mechanical Design
 
-Our vehicle is an autonomous model car according to the WRO 2026 Future Engineers rules. The mechanical design is based on the classic Ford Model T architecture, using a rear-wheel-drive system where a single large LEGO motor provides power to the rear axle, while a single smaller LEGO motor acts as the steering motor to control the front wheels. 
+Our vehicle is an autonomous model car according to the WRO 2026 Future Engineers rules. The mechanical design is based on the classic Ford Model T architecture, using a rear-wheel-drive system where a single large LEGO motor provides power to the rear axle, while a single smaller LEGO motor acts as the steering motor to control the front wheels. This balances the vehicle's driving dynamics and prevents the tires from slipping sideways during tight cornering. Both drive wheels are physically locked to the same axle, completely eliminating any form of prohibited electronic or independent dual-motor differential setups.
+
+### Technical Specifications
+* **Dimensions:** 250mm (Length) x 180 mm (Width) x 150 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
+* **Total Weight:** 1.035 kg — *Under the maximum limit of 1.5 kilograms.*
 
 ### Kinematics & Drivetrain Architecture
-* **Steering Actuation:** We used a single LEGO steering motor configured with a physical geometry (Ackermann steering concept) to manage turning angles. This provides smooth traction and prevents the tires from slipping sideways during tight cornering.
-* **Propulsion System:** Driven by a single angular high-torque LEGO motor connected to a fixed rear axle drivetrain via a 1:1 gearbox layout.Both drive wheels are physically locked to the same axle, completely eliminating any form of prohibited electronic or independent dual-motor differential setups.
+* **Steering Actuation:** We used a single LEGO steering motor configured with a physical geometry (Ackermann steering concept) to manage turning angles. This provides smooth traction and prevents the tires from slipping sideways during sharp turns.
+* **Propulsion System:** Driven by a single large LEGO motor connected to the rear axle with a 1:1 gear ratio. Both rear wheels are locked on the same axle, which perfectly follows the rules by eliminating any dual-motor or differential setups.
 * **Wheel Restrictions:** The vehicle rides exclusively on high-grip rubber tires.
 
 
@@ -56,9 +53,35 @@ Our vehicle is an autonomous model car according to the WRO 2026 Future Engineer
 - Driving Motor: LEGO Motor
 - Steering Motor: LEGO Motor
 
-## Software
-- Programming language: Python
-- Operating system: Pybricks
+## Software - Power & Sensor Architecture
+
+### 1. Wiring Diagram & Port Assignment
+To ensure a stable and reproducible control loop, all electronic components are directly routed to the LEGO SPIKE Prime Hub. The specific physical port arrangement is mapped as follows:
+
+| Component | Device Type | Port Assignment | Function |
+| :--- | :--- | :--- | :--- |
+| **Driving Motor** | LEGO Large Angular Motor | **Port E** | Rear-axle propulsion and velocity control |
+| **Steering Motor** | LEGO Medium Angular Motor | **Port F** | Front-wheel Ackermann steering actuation |
+| **Distance & Color Sensor** | LEGO ColorDistance Sensor | **Port B** | Front obstacle detection, distance tracking and obstacle color recognition |
+
+### 2. Sensor Selection & Placement Justification
+The positioning of our sensors was mathematically and physically optimized based on the official field geometry:
+* **Distance Sensor:** Mounted on the absolute leading edge of the front bumper at a height of 50 mm from the surface. This elevation ensures it perfectly captures the 100-150 mm high obstacle pillars while completely ignoring the low field boundary walls, eliminating false-positive braking triggers.
+* **Color Sensor:** Positioned facing vertically downward, exactly 10 mm above the track surface. This tight gap minimizes the interference of changing ambient room lighting, maximizing the contrast ratio.
+
+### 3. Obstacle & Parking Logic
+* **Red and Green Obstacles:** When an obstacle is detected within 10 cm, the color sensor evaluates its RGB signature. If the red value is dominant, the steering motor sets an immediate steering angle adjustment keeping to the right side of the lane. If green is dominant, it applies an adjustment, keeping to the left side until the distance sensor clears the object.
+* **The Parking Mission:** The software maintains an internal lap counter and upon entering the 3rd lap, the color sensor begins scanning for the magenta parking zone barrier. Once detected, the robot halts, switches the driving motor to reverse and executes a pre-programmed turn sequence to achieve a precise parallel park.
+
+### 4. System State Machine
+Our Pybricks Python program is structured around making a real-time decision. The software continuously cycles through five distinct operational states:
+
+* **STATE 1: INIT** -> Runs the sensor calibration and resets the steering motor to the center position.
+* **STATE 2: LANE_FOLLOWING** -> Executes the main line-following algorithm using the color sensor.
+* **STATE 3: OBSTACLE_AVOIDANCE** -> Triggered when the distance sensor detects an object closer than 10 cm. It checks the pillar's color and calculates the bypass steering angle.
+* **STATE 4: PARKING_SEQUENCE** -> Triggered after completing the 3rd lap when the magenta lines are detected.
+* **STATE 5: STOP** -> Fully cuts power to all motors and completes the run.
+
 
 ## Repository Structure
 
