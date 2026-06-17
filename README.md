@@ -102,8 +102,8 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 ## Development
 **This repository is used to track the development of our autonomous vehicle for WRO 2026.**
 
-We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
-The **first robot** we used was 3D printed and build by hand, using several distance sensors. The following pictures show the robot from all sides:
+We started working on our vehicle for WRO 2026 in late September. From then until June we have changed four different robots. 
+The **first robot** we used was 3D printed and built by hand, using several distance sensors. The following pictures show the robot from all sides:
 <br>
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
 <img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
@@ -121,10 +121,12 @@ The following pictures are pictures of robot when it was finished.
 <img src="up2.jpeg" width="250"> <img src="left side2.jpeg" width="250"> <img src="right side2.jpeg" width="250"> 
 <br> 
 <br> 
-The **third robot** was lego robot. It was made beacuse we had big problems with connecting second robot to our laptop. It was inspired by classic Ford Model T.
+The **third robot** was LEGO robot. It was made because we had big problems with connecting second robot to our laptop. It was inspired by classic Ford Model T.
 The following pictures show the robot from all sides:
 <br>
 <img src="ford1.jpeg" width="250"> <img src="ford2.jpeg" width="250"> <img src="ford front.jpeg" width="250"> 
 <img src="ford down.jpeg" width="250"> <img src="ford right.jpeg" width="250"> <img src="ford left.jpeg" width="250"> <img src="ford back.jpeg" width="250"> 
-
+<br>
+After some time working with LEGO robot we realized that, because of how the weight of the robot was distributed, we couldn't keep working with it and so we made a new, **fourth**, LEGO robot which is our current one and the one we will be competing with. The following pictures are pictures of our current robot:
+<br>
 
