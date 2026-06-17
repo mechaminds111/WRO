@@ -129,4 +129,5 @@ The following pictures show the robot from all sides:
 <br>
 After some time working with LEGO robot we realized that, because of how the weight of the robot was distributed, we couldn't keep working with it and so we made a new, **fourth**, LEGO robot which is our current one and the one we will be competing with. The following pictures are pictures of our current robot:
 <br>
-
+<img src="back4.jpeg" width="250"> <img src="front4.jpeg" width="250"> <img src="down4.jpeg" width="250"> 
+<img src="up4.jpeg" width="250"> <img src="left4.jpeg" width="250"> <img src="right4.jpeg" width="250">
