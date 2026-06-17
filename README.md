@@ -116,6 +116,8 @@ The **second robot** was an upgraded version on the first one. It had a camera a
 <img src="building robot2 pic7.jpeg" width="250">
 <br>
 <br>
+The following pictures are pictures of robot when it was finished building.
+<br>
 <img src="back2.jpeg" width="250"> <img src="front2.jpeg" width="250"> <img src="down2.jpeg" width="250"> 
 <img src="up2.jpeg" width="250"> <img src="left side2.jpeg" width="250"> <img src="right side2.jpeg" width="250"> 
 <br> 
