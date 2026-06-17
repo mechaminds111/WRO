@@ -102,5 +102,7 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 **This repository is used to track the development of our autonomous vehicle for WRO 2026.**
 
 We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
-The first robot we used was based on 
+The first robot we used was 3D printed and build by hand, using several distance sensors. The following pictures show the robot from all sides:
+/assets/images/back1.jpeg
+
 
