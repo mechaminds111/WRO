@@ -28,9 +28,11 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
 
 ## Vehicle
 
-Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. 
-The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and 
-completing the parking challenge without human intervention.
+Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and completing the parking challenge without human intervention.
+
+### Images
+
+
 
 ## Vehicle & Mechanical Design
 
@@ -93,6 +95,10 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 
 /docs - documentation
 
-## Development
 
-This repository is used to track the development of our autonomous vehicle for WRO 2026.
+## Development
+**This repository is used to track the development of our autonomous vehicle for WRO 2026.**
+
+We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
+This was the first robot we used: 
+
