@@ -124,6 +124,7 @@ The following pictures are pictures of robot when it was finished building.
 The **third robot** was lego robot. It was made beacuse we had big problems with connecting second robot to our laptop. It was inspired by classic Ford Model T.
 The following pictures show the robot from all sides:
 <br>
-
+<img src="back2.jpeg" width="250"> <img src="front2.jpeg" width="250"> <img src="down2.jpeg" width="250"> 
+<img src="up2.jpeg" width="250"> <img src="left side2.jpeg" width="250"> <img src="right side2.jpeg" width="250"> 
 
 
