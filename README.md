@@ -113,7 +113,7 @@ The **second robot** was an upgraded version on the first one. It had a camera a
 <br>
 <img src="building robot2 pic1.jpeg" width="250"> <img src="building robot2 pic2.jpeg" width="250"> <img src="building robot2 pic3.jpeg" width="250"> 
 <img src="building robot2 pic4.jpeg" width="250"> <img src="building robot2 pic5.jpeg" width="250"> <img src="building robot2 pic6.jpeg" width="250"> 
-<img src="building robot7 pic1.jpeg" width="250">
+<img src="building robot2 pic7.jpeg" width="250">
 <br>
 <br>
 <img src="back2.jpeg" width="250"> <img src="front2.jpeg" width="250"> <img src="down2.jpeg" width="250"> 
