@@ -87,18 +87,20 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 
 ## Repository Structure
 
+/docs - documentation
+
 /code - source code
 
 /images - robot images
 
 /videos - challenge videos
 
-/docs - documentation
+
 
 
 ## Development
 **This repository is used to track the development of our autonomous vehicle for WRO 2026.**
 
 We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
-This was the first robot we used: 
+The first robot we used was based on 
 
