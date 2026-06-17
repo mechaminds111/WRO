@@ -103,6 +103,6 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 
 We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
 The first robot we used was 3D printed and build by hand, using several distance sensors. The following pictures show the robot from all sides:
-![First pic](//assets/images/back1.jpeg)
+![First pic](back1.jpeg)
 
 
