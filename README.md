@@ -111,9 +111,8 @@ The **first robot** we used was 3D printed and build by hand, using several dist
 <br>
 The **second robot** was an upgraded version on the first one. It had a camera and several distance sensors all around it. Before we started programming we had to make new wheels and change a few parts. Next few pictures show us making new parts:
 <br>
-<img src="building robot2 pic1.jpeg" width="250"> <img src="building robot2 pic2.jpeg" width="250"> <img src="building robot2 pic3.jpeg" width="250"> 
-<img src="building robot2 pic4.jpeg" width="250"> <img src="building robot2 pic5.jpeg" width="250"> <img src="building robot2 pic6.jpeg" width="250"> 
-<img src="building robot2 pic7.jpeg" width="250">
+<img src="izrada1.jpeg" width="250"> <img src="izrada2.jpeg" width="250"> <img src="izrada3.jpeg" width="250"> 
+<img src="izrada4.jpeg" width="250"> <img src="izrada5.jpeg" width="250"> <img src="izrada6.jpeg" width="250"> 
 <br>
 <br>
 The following pictures are pictures of robot when it was finished building.
