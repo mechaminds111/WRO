@@ -115,7 +115,7 @@ The **second robot** was an upgraded version on the first one. It had a camera a
 <img src="izrada4.jpeg" width="250"> <img src="izrada5.jpeg" width="250"> <img src="izrada6.jpeg" width="250"> 
 <br>
 <br>
-The following pictures are pictures of robot when it was finished building.
+The following pictures are pictures of robot when it was finished.
 <br>
 <img src="back2.jpeg" width="250"> <img src="front2.jpeg" width="250"> <img src="down2.jpeg" width="250"> 
 <img src="up2.jpeg" width="250"> <img src="left side2.jpeg" width="250"> <img src="right side2.jpeg" width="250"> 
