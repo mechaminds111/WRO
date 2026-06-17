@@ -34,6 +34,7 @@ Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Fut
 
 
 
+
 ## Vehicle & Mechanical Design
 
 Our vehicle is an autonomous model car according to the WRO 2026 Future Engineers rules. The mechanical design is based on the classic Ford Model T architecture, using a rear-wheel-drive system where a single large LEGO motor provides power to the rear axle, while a single smaller LEGO motor acts as the steering motor to control the front wheels. This balances the vehicle's driving dynamics and prevents the tires from slipping sideways during tight cornering. Both drive wheels are physically locked to the same axle, completely eliminating any form of prohibited electronic or independent dual-motor differential setups.
@@ -102,8 +103,12 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 **This repository is used to track the development of our autonomous vehicle for WRO 2026.**
 
 We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
-The first robot we used was 3D printed and build by hand, using several distance sensors. The following pictures show the robot from all sides:
+The **first robot** we used was 3D printed and build by hand, using several distance sensors. The following pictures show the robot from all sides:
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
 <img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
+<t>
+The **second robot** was an upgraded version on the first one. It had a camera and several distance sensors all around it.
+
+
 
 
