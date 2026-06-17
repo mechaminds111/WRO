@@ -104,10 +104,13 @@ Our Pybricks Python program is structured around making a real-time decision. Th
 
 We started working on our vehicle for WRO 2026 in late September. From then untill June we have changed four different robots. 
 The **first robot** we used was 3D printed and build by hand, using several distance sensors. The following pictures show the robot from all sides:
+<br>
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
 <img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
-<t>
-The **second robot** was an upgraded version on the first one. It had a camera and several distance sensors all around it.
+<br> 
+<br>
+The **second robot** was an upgraded version on the first one. It had a camera and several distance sensors all around it. Before we started programming we had to make new wheels and change a few parts. Next few pictures show us making new parts:
+<img src="building robot2 pic1.jpeg" width="250"> <img src="building robot2 pic2.jpeg" width="250"> <img src="building robot2 pic3.jpeg" width="250"> <img src="building robot2 pic4.jpeg" width="250"> <img src="building robot2 pic5.jpeg" width="250"> <img src="building robot2 pic6.jpeg" width="250"> <img src="building robot7 pic1.jpeg" width="250">
 
 
 
