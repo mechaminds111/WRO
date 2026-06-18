@@ -37,7 +37,7 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
 
 Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and completing the parking challenge without human intervention.
 
-### Images
+## Images
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
 <img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
 <br>
