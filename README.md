@@ -2,8 +2,8 @@
 
 ## Team
 MechaMinds
-<img src="back last.jpeg" width="250"> <img src="front last.jpeg" width="250"> <img src="down last.jpeg" width="250"> 
-<img src="up last.jpeg" width="250"> <img src="left last.jpeg" width="250"> <img src="right last.jpeg" width="250">
+<img src="team1.jpeg" width="250"> <img src="team2.jpeg" width="250"> <img src="team3.jpeg" width="250"> 
+<img src="team4.jpeg" width="250"> 
 
 ## Members
 While every member of MechaMinds was fully involved in every stage of development—from brainstorming and building to coding and testing, 
