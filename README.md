@@ -2,6 +2,8 @@
 
 ## Team
 MechaMinds
+<br>
+<br>
 <img src="team1.jpeg" width="250"> <img src="team2.jpeg" width="250"> <img src="team3.jpeg" width="250"> 
 <img src="team4.jpeg" width="250"> 
 
