@@ -1,7 +1,7 @@
 # WRO 2026 Future Engineers
 
 ## Team
-MechaMinds, Kutina, Croatia
+MechaMinds, Kutina, Croatia, Srednja škola Tina Ujevića
 <br>
 <br>
 <img src="team1.jpeg" width="250"> <img src="team2.jpeg" width="250" > <img src="team3.JPG" width="250"> 
