@@ -35,7 +35,7 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
 
 ## Vehicle
 
-Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and completing the parking challenge without human intervention.
+Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles, recognizing traffic signs without human intervention.
 
 ## Images
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
@@ -61,8 +61,8 @@ Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Fut
 Our vehicle is an autonomous model car according to the WRO 2026 Future Engineers rules. The mechanical design is based on the classic Ford Model T architecture, using a rear-wheel-drive system where a single large LEGO motor provides power to the rear axle, while a single smaller LEGO motor acts as the steering motor to control the front wheels. This balances the vehicle's driving dynamics and prevents the tires from slipping sideways during tight cornering. Both drive wheels are physically locked to the same axle, completely eliminating any form of prohibited electronic or independent dual-motor differential setups.
 
 ### Technical Specifications
-* **Dimensions:** 250mm (Length) x 180 mm (Width) x 150 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
-* **Total Weight:** 1.035 kg — *Under the maximum limit of 1.5 kilograms.*
+* **Dimensions:** 220mm (Length) x 170 mm (Width) x 150 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
+* **Total Weight:** 0.532 kg — *Under the maximum limit of 1.5 kilograms.*
 
 ### Kinematics & Drivetrain Architecture
 * **Steering Actuation:** We used a single LEGO steering motor configured with a physical geometry (Ackermann steering concept) to manage turning angles. This provides smooth traction and prevents the tires from slipping sideways during sharp turns.
