@@ -4,7 +4,7 @@
 MechaMinds
 <br>
 <br>
-<img src="team1.jpeg" width="250"> <img src="team2.jpeg" width="250" height='250'> <img src="team3.JPG" width="250"> 
+<img src="team1.jpeg" width="250"> <img src="team2.jpeg" width="250" > <img src="team3.JPG" width="250"> 
 <img src="team4.JPG" width="250"> 
 
 ## Members
