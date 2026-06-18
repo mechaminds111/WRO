@@ -3,7 +3,7 @@
 ## Team
 MechaMinds, Kutina, Croatia, Srednja škola Tina Ujevića
 <br><br><br>
-At first we were classmates that didnt't talk much but when we decided to come together as a team in robotics competiton everx+ything changed. 
+At first we were classmates that didnt't talk much but when we decided to come together as a team in robotics competiton everything changed. 
 Now we are friends that love spending time together and most important thing is that we are a **team** that is ready to overcome every problem.
 <br>
 <br>
