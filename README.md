@@ -2,6 +2,8 @@
 
 ## Team
 MechaMinds
+<img src="back last.jpeg" width="250"> <img src="front last.jpeg" width="250"> <img src="down last.jpeg" width="250"> 
+<img src="up last.jpeg" width="250"> <img src="left last.jpeg" width="250"> <img src="right last.jpeg" width="250">
 
 ## Members
 While every member of MechaMinds was fully involved in every stage of development—from brainstorming and building to coding and testing, 
@@ -31,6 +33,20 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
 Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles, recognizing traffic signs and completing the parking challenge without human intervention.
 
 ### Images
+<img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
+<img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
+<br>
+<img src="izrada1.jpeg" width="250"> <img src="izrada2.jpeg" width="250"> <img src="izrada3.jpeg" width="250"> 
+<img src="izrada4.jpeg" width="250"> <img src="izrada5.jpeg" width="250"> <img src="izrada6.jpeg" width="250"> 
+<br>
+<img src="back2.jpeg" width="250"> <img src="front2.jpeg" width="250"> <img src="down2.jpeg" width="250"> 
+<img src="up2.jpeg" width="250"> <img src="left side2.jpeg" width="250"> <img src="right side2.jpeg" width="250"> 
+<br>
+<img src="ford1.jpeg" width="250"> <img src="ford2.jpeg" width="250"> <img src="ford front.jpeg" width="250"> 
+<img src="ford down.jpeg" width="250"> <img src="ford right.jpeg" width="250"> <img src="ford left.jpeg" width="250"> <img src="ford back.jpeg" width="250"> 
+<br>
+<img src="back last.jpeg" width="250"> <img src="front last.jpeg" width="250"> <img src="down last.jpeg" width="250"> 
+<img src="up last.jpeg" width="250"> <img src="left last.jpeg" width="250"> <img src="right last.jpeg" width="250">
 
 
 
