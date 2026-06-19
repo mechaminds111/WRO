@@ -118,7 +118,7 @@ The **First robot** we used was 3D printed and built by hand, using several dist
 <br><br>
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
 <img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
-You can find this robot compleating three circles around the track on our YouTube channel or on this link: 
+You can find this robot compleating three circles around the track on our YouTube channel or on this link: [First three laps around the track - walltracking](https://www.youtube.com/watch?v=BhE81YOuBHM)
 <br> 
 <br>
 The **Second robot** was an upgraded version on the first one. It had a camera and several distance sensors all around it. Before we started programming we had to make new wheels and change a few parts. Next few pictures show us making new parts:
