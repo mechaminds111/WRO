@@ -88,14 +88,13 @@ To ensure a stable and reproducible control loop, all electronic components are 
 
 | Component | Device Type | Port Assignment | Function |
 | :--- | :--- | :--- | :--- |
-| **Driving Motor** | LEGO Large Angular Motor | **Port E** | Rear-axle propulsion and velocity control |
-| **Steering Motor** | LEGO Medium Angular Motor | **Port F** | Front-wheel Ackermann steering actuation |
-| **Distance & Color Sensor** | LEGO ColorDistance Sensor | **Port B** | Front obstacle detection, distance tracking and obstacle color recognition |
+| **Driving Motor** | LEGO Large Angular Motor | **Port A** | Rear-axle propulsion and velocity control |
+| **Steering Motor** | LEGO Medium Angular Motor | **Port C** | Front-wheel Ackermann steering actuation |
+| **Distance Sensor** | LEGO Distance Sensor | **Port E, Port D, Port F** | Front obstacle detection and distance tracking |
 
 ### 2. Sensor Selection & Placement Justification
 The positioning of our sensors was mathematically and physically optimized based on the official field geometry:
 * **Distance Sensor:** Mounted on the absolute leading edge of the front bumper at a height of 50 mm from the surface. This elevation ensures it perfectly captures the 100-150 mm high obstacle pillars while completely ignoring the low field boundary walls, eliminating false-positive braking triggers.
-* **Color Sensor:** Positioned facing vertically downward, exactly 10 mm above the track surface. This tight gap minimizes the interference of changing ambient room lighting, maximizing the contrast ratio.
 
 ### 3. Obstacle & Parking Logic
 * **Red and Green Obstacles:** When an obstacle is detected within 10 cm, the color sensor evaluates its RGB signature. If the red value is dominant, the steering motor sets an immediate steering angle adjustment keeping to the right side of the lane. If green is dominant, it applies an adjustment, keeping to the left side until the distance sensor clears the object.
