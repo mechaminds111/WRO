@@ -45,7 +45,7 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
   * **Red Pillar:** When the vehicle comes across a red obstacle it needs to keep to the **right** side of the lane.
   * **Green Pillar:** When the vehicle comes across a green obstacle it needs to keep to the **left** side of the lane.
 * **The Parking Mission:** Upon completing the third lap, the vehicle must autonomously locate the designated parking zone (marked by magenta barriers) and do a precise, parallel parking maneuver without making contact with the walls or obstacles.
-<br>
+  <br>
 **OUR SOLUTION:** To enable the robot to recognize the red and green obstacles, we would have needed color sensors. However, since we started working with LEGO robots relatively late, we did not have enough time to develop and test this feature. As a result, our robot does not use color sensors. Instead, our current solution relies on a pre-programmed path that tells the robot where it is supposed to go.
 
 ## Vehicle
@@ -138,7 +138,7 @@ The following pictures show the robot from all sides:
 <br><br>
 <img src="ford1.jpeg" width="250"> <img src="ford2.jpeg" width="250"> <img src="ford front.jpeg" width="250"> 
 <img src="ford down.jpeg" width="250"> <img src="ford right.jpeg" width="250"> <img src="ford left.jpeg" width="250"> <img src="ford back.jpeg" width="250"> 
-The video of this robot driving is also uploaded on our YouTube channel: [First three laps around the track - Ford] (https://www.youtube.com/watch?v=bmhLn2NZVjs)
+The video of this robot driving is also uploaded on our YouTube channel: [First three laps around the track - Ford](https://www.youtube.com/watch?v=bmhLn2NZVjs)
 <br>
 After some time working with LEGO robot we realized that, because of how the weight of the robot was distributed, we couldn't keep working with it and so we made a new, **Fourth**, LEGO robot which is our current one and the one we will be competing with. The following pictures are pictures of our current robot:
 <br>
