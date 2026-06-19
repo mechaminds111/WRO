@@ -39,7 +39,7 @@ OUR SOLUTION:...
 
 ## Vehicle
 
-Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles, recognizing traffic signs without human intervention.
+Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Future Engineers competition. The robot is capable of following the track, avoiding obstacles and recognizing traffic signs without human intervention.
 
 ## Images
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
