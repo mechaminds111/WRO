@@ -117,7 +117,8 @@ We started working on our vehicle for WRO 2026 in late September. From then unti
 The **First robot** we used was 3D printed and built by hand, using several distance sensors. The following pictures show the robot from all sides:
 <br><br>
 <img src="back1.jpeg" width="250"> <img src="front1.jpeg" width="250"> <img src="left side1.jpeg" width="250"> <img src="right side1.jpeg" width="250">
-<img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250">
+<img src="under1.jpeg" width="250"> <img src="up1.jpeg" width="250"> 
+<br>
 You can find this robot compleating three circles around the track on our YouTube channel or on this link: [First three laps around the track - walltracking](https://www.youtube.com/watch?v=BhE81YOuBHM)
 <br> 
 <br>
@@ -138,6 +139,7 @@ The following pictures show the robot from all sides:
 <br><br>
 <img src="ford1.jpeg" width="250"> <img src="ford2.jpeg" width="250"> <img src="ford front.jpeg" width="250"> 
 <img src="ford down.jpeg" width="250"> <img src="ford right.jpeg" width="250"> <img src="ford left.jpeg" width="250"> <img src="ford back.jpeg" width="250"> 
+<br>
 The video of this robot driving is also uploaded on our YouTube channel: [First three laps around the track - Ford](https://www.youtube.com/watch?v=bmhLn2NZVjs)
 <br>
 After some time working with LEGO robot we realized that, because of how the weight of the robot was distributed, we couldn't keep working with it and so we made a new, **Fourth**, LEGO robot which is our current one and the one we will be competing with. The following pictures are pictures of our current robot:
