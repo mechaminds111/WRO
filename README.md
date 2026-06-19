@@ -8,7 +8,7 @@ Now we are friends who love spending time together and most importantly, we are 
 <br>
 <br>
 <img src="team1.jpeg" width="350" hight='300'> <img src="team2.jpeg" width="250" > <br>
-<img src="team3.JPG" width="350" height='300'> <img src="team4.JPG" width="350" height='300'> 
+<img src="team3.JPG" width="350" height='300'> <img src="team4.JPG" width="350" height='300'> <img src="lego - mechaminds.jpg" width="350" height='300'> 
 
 ## Members
 While every member of MechaMinds was fully involved in every stage of development—from brainstorming and building to coding and testing, 
