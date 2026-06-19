@@ -25,6 +25,7 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
 
 ### 1. Open Challenge
 * **Objective:** The vehicle must successfully complete three (3) full consecutive laps on the track.
+  OUR SOLUTION:....
 
 ### 2. Obstacle Challenge
 * **Objective:** The vehicle must complete three (3) laps while navigating throught a specific layout of randomly placed green and red obstacles and in the end it needs to do a parallel parking.
@@ -32,6 +33,7 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
   * **Red Pillar:** When the vehicle comes across a red obstacle it needs to keep to the **right** side of the lane.
   * **Green Pillar:** When the vehicle comes across a green obstacle it needs to keep to the **left** side of the lane.
 * **The Parking Mission:** Upon completing the third lap, the vehicle must autonomously locate the designated parking zone (marked by magenta barriers) and do a precise, parallel parking maneuver without making contact with the walls or obstacles.
+OUR SOLUTION:...
 
 ## Vehicle
 
