@@ -76,7 +76,7 @@ Our vehicle is a fully autonomous self-driving car designed for the WRO 2026 Fut
 Our vehicle is an autonomous model car according to the WRO 2026 Future Engineers rules. The mechanical design uses a rear-wheel-drive system where a single large LEGO motor provides power to the rear axle, while a single smaller LEGO motor acts as the steering motor to control the front wheels. This balances the vehicle's driving dynamics and prevents the tires from slipping sideways during tight cornering. Both drive wheels are physically locked to the same axle, completely eliminating any form of prohibited electronic or independent dual-motor differential setups.
 
 ### Technical specifications
-* **Dimensions:** 220mm (Length) x 170 mm (Width) x 150 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
+* **Dimensions:** 225mm (Length) x 185 mm (Width) x 90 mm (Height) — *Within the maximum allowed 300 x 200 x 300 mm boundary.*
 * **Total weight:** 0.532 kg — *Under the maximum limit of 1.5 kilograms.*
 
 ### Kinematics & drivetrain architecture
