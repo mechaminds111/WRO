@@ -9,6 +9,8 @@ Now we are friends who love spending time together and most importantly, we are 
 <br>
 <img src="team1.jpeg" width="350" hight='300'> <img src="team2.jpeg" width="250" > <br>
 <img src="team3.JPG" width="350" height='300'> <img src="team4.JPG" width="350" height='300'> <img src="lego - mechaminds.jpg" width="300" height='500'> 
+<br>
+
 
 ## Members
 While every member of MechaMinds was fully involved in every stage of development—from brainstorming and building to coding and testing, 
@@ -20,13 +22,13 @@ we each took the lead in specific areas to ensure maximum efficiency:
 
 ## Repository Structure
 
-/images - robot images
+* **images** - robot images
 
-/docs - documentation
+* **docs** - documentation
 
-/videos - challenge videos
+* **videos** - all videos are visible on our YouTube channel [MechaMinds](https://www.youtube.com/@MechaMinds111)
 
-/code - source code
+* **code** - source code
 
 
 ## Competition and our solutions
