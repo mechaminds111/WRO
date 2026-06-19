@@ -1,7 +1,7 @@
 # WRO 2026 Future Engineers
 
 ## Team
-MechaMinds, Srednja škola Tina Ujevića, Kutina, Croatia, 
+MechaMinds, Srednja škola Tina Ujevića, Kutina, Croatia
 <br><br><br>
 At first we were classmates who didnt't talk much, but when we decided to come together as a team for a robotics competiton, everything changed. 
 Now we are friends who love spending time together and most importantly, we are a **team** that is ready to overcome every challenge.
