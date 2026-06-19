@@ -26,7 +26,7 @@ The 2026 tournament is focused on the vehicle completing two distinct challenges
 ### 1. Open Challenge
 * **Objective:** The vehicle must successfully complete three (3) full consecutive laps on the track.
 <br>
-#### OUR SOLUTION
+**OUR SOLUTION:**
 
 ### 2. Obstacle Challenge
 * **Objective:** The vehicle must complete three (3) laps while navigating throught a specific layout of randomly placed green and red obstacles and in the end it needs to do a parallel parking.
