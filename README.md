@@ -149,3 +149,289 @@ After some time working with LEGO robot we realized that, because of how the wei
 <img src="back last.jpeg" width="250"> <img src="front last.jpeg" width="250"> <img src="down last.jpeg" width="250"> 
 <img src="up last.jpeg" width="250"> <img src="left last.jpeg" width="250"> <img src="right last.jpeg" width="250">
 
+## Code
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorDistanceSensor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.tools import hub_menu
+from pybricks.tools import wait, StopWatch
+from pybricks.robotics import DriveBase
+
+robot = PrimeHub()
+#senzor = ColorDistanceSensor(Port.B)  
+senzor_udaljenostiD= UltrasonicSensor(Port.D) 
+senzor_udaljenostiN= UltrasonicSensor(Port.F) 
+senzor_udaljenostiL= UltrasonicSensor(Port.E)
+
+motor_pogon=Motor(Port.A,Direction.COUNTERCLOCKWISE)#E
+motor_skretanje=Motor(Port.C,Direction.CLOCKWISE)#F
+#robot=DriveBase(motor_pogon,121,62.4)
+#robot.use_gyro(True)
+
+#varijable
+rWheel=32.5
+pi=3.141592653589793
+tolerance=360
+resetAngle=-77 #69
+stallSpeed=500
+
+cWheel=2*rWheel*pi
+
+def ResetTurningAngle():
+    motor_skretanje.run_until_stalled(stallSpeed)
+    motor_skretanje.reset_angle()
+    motor_skretanje.run_angle(300,resetAngle)
+    motor_skretanje.reset_angle()
+
+def fd(v,s): #brzina, distance
+    angle=(s/cWheel)*360
+    motor_pogon.reset_angle()
+    motor_pogon.run_angle(v,angle)
+
+def turn(v,t,d): #brzina, time, direction, 
+    if d.upper()=='L' or d.upper()=='LEFT' or d.upper()== 'LIJEVO':
+        motor_skretanje.run_until_stalled(-stallSpeed)
+    if d.upper()=='D' or d.upper()=='R' or d.upper()=='DESNO' or d.upper()=='RIGHT':
+        motor_skretanje.run_until_stalled(stallSpeed)
+    motor_pogon.run(v) 
+    wait(t)
+    motor_pogon.stop()
+    ResetTurningAngle()
+    #motor_skretanje.run_target(300,resetAngle)
+
+ResetTurningAngle()
+#3L
+'''for i in range(6):
+    fd(1000,1000)
+    turn(1000,2000,'l')#2000 time
+    fd(1000,1200)#probaj jos 1100
+    turn(1000,2000,'l')'''
+
+#4L RADI!
+'''fd(-1000,500)
+for i in range(6):
+    fd(1000,1000)
+    turn(1000,2000,'l')#2000 time
+    fd(1000,1100)
+    turn(1000,2000,'l')'''
+
+#1L+ reset angle na -69 RADI!
+'''for i in range(6):
+    fd(1000,1000)
+    turn(1000,1600,'l')#2000 time
+    fd(1000,1200)#ak ne radi stavi 1200 ko gore
+    turn(1000,1600,'l')'''
+#2L+RADI!
+'''fd(1000,400)
+for i in range(6):
+    turn(1000,1600,'l')#2000 time
+    fd(1000,1200)#ak ne radi stavi 1200 ko gore
+    turn(1000,1500,'l')
+    fd(1000,1400)'''
+#5L
+'''for i in range(6):
+    fd(1000,1100)
+    turn(1000,1700,'l')#2000 time
+    fd(1000,1400)#ak ne radi stavi 1200 ko gore
+    turn(1000,1700,'l')'''
+#6L
+'''fd(1000,400)
+for i in range(8):
+    turn(1000,1700,'l')#2000 time
+    fd(1000,1400)#ak ne radi stavi 1200 ko gore
+    turn(1000,1600,'l')
+    fd(1000,1300)'''
+
+#1D ko 2L
+'''
+#2D ko 1L
+for i in range(6):
+    fd(1000,1200)
+    turn(1000,1700,'d')#2000 time
+    fd(1000,1200)#ak ne radi stavi 1200 ko gore
+    turn(1000,1700,'d')'''
+
+'''#3D ko 4L
+#4D ko 3L
+for i in range(6):
+    fd(1000,1000)
+    turn(1000,2000,'d')#2000 time
+    fd(1000,1200)#probaj jos 1100
+    turn(1000,2000,'d')
+#5D ko 6L
+fd(1000,400)
+for i in range(8):
+    turn(1000,1700,'l')#2000 time
+    fd(1000,1400)#ak ne radi stavi 1200 ko gore
+    turn(1000,1600,'l')
+    fd(1000,1300)
+#6D ko 5L
+'''
+
+'''if selected =="1":
+    drive1()
+elif selected =="2":
+    drive2()'''
+'''def drive1():'''
+
+
+'''for i in range(12):
+    ResetTurningAngle()
+    motor_pogon.run(1000)
+    wait(100)    #ide ravno'''
+    
+    
+    
+'''motor_pogon.run(0)
+    wait(900) #stane
+    motor_skretanje.run_angle(1000, 60)
+    wait(1000)    #zakrene se
+    motor_pogon.run(1000)
+    wait(500)  #pomakne se malo ravno
+    motor_skretanje.run_angle(1000, -55)
+    wait(1000)   #zakrenen se nazad tocno (malo manje)
+    motor_pogon.run(1000)
+    wait(1500)  #pici dalje ravno
+    '''
+    
+
+
+
+
+'''def drive2():'''
+'''for i in range(12):
+    motor_pogon.run(1500)
+    for t in range(40): 
+        if senzor.color() == Color.RED:
+            motor_skretanje.run_angle(1000,-60)
+            wait(1000)
+            motor_pogon.run(1000)
+            wait(600)
+            motor_skretanje.run_angle(1000,40)
+            wait(1000)
+            motor_pogon.run(1000)
+            wait(1000)
+            
+        elif senzor.color() == Color.GREEN:
+            motor_skretanje.run_angle(1000,60)
+            wait(1000)
+            motor_pogon.run(1000)
+            wait(600)
+            motor_skretanje.run_angle(1000,-40)
+            wait(1000)
+            motor_pogon.run(1000)
+            wait(1000)
+            
+        wait(50) 
+
+
+    wait(800)
+    motor_skretanje.run_angle(1000, 60)
+    wait(1200)
+    motor_skretanje.run_angle(1000, -60)
+    wait(1000)
+'''
+
+'''while True:
+    color = sensor.color()
+    if color == Color.RED :
+        motor_pogon.run(0)
+        wait(600)
+    else:
+        motor_pogon.run(1000)
+        wait(600)
+        
+
+    wait(100)    '''
+
+
+
+#senzor distance desni - port c
+ 
+#print(senzor_udaljenosti.distance())
+
+'''if senzor_udaljenosti.distance() > 100:
+    motor_pogon.run(1000)
+    wait(1900)
+    
+else:
+    motor_skretanje.run_angle(1000, 30)
+    wait(1000)
+    motor_skretanje.run_angle(1000, -30)
+    wait(1000)'''
+
+'''motor_pogon.run(1000)  # stalno vozi naprijed
+
+if senzor_udaljenosti.distance() <= 100:
+    motor_skretanje.run_angle(1000, 30)
+    wait(1000)
+    motor_skretanje.run_angle(1000, -30)'''
+
+
+
+'''ResetTurningAngle()'''
+'''
+senzor_udaljenosti = UltrasonicSensor(Port.D)
+senzor_prednji = UltrasonicSensor(Port.F)
+
+ResetTurningAngle()
+
+while True:
+
+    # spora vožnja naprijed
+    motor_pogon.run(500)
+
+    # ako prednji senzor vidi prepreku na 20 cm
+    if senzor_prednji.distance() <= 200:
+
+        motor_pogon.stop()
+
+        motor_skretanje.run_target(300, 60)  # desno
+        wait(1000)
+
+        motor_pogon.run(300)
+        wait(1000)
+
+        motor_skretanje.run_target(300, 0)   # ravno
+
+    # ako bočni senzor vidi prepreku na 10 cm
+    elif senzor_udaljenosti.distance() <= 100:
+
+        motor_skretanje.run_target(300, -40)  # lijevo
+
+    else:
+
+        motor_skretanje.run_target(300, 0)    # ravno
+
+    wait(50)'''
+
+ResetTurningAngle()
+
+motor_pogon.reset_angle()
+motor_pogon.run(800)
+
+while robot.imu.heading() <= 360 * 3:
+    
+    if  senzor_udaljenostiN.distance()<=600 :
+        #motor_pogon.run(500)
+        #turn(400, 20,'l' )
+        if senzor_udaljenostiL.distance() > senzor_udaljenostiD.distance():
+            turn(400, 20, 'l')   # više mjesta lijevo
+        else:
+            turn(400, 20, 'd')   # više mjesta desno
+   
+    elif  senzor_udaljenostiD.distance()<200 and senzor_udaljenostiL.distance() >200:
+        motor_pogon.run(500)
+        turn(400, 20,'l' )
+        
+    elif senzor_udaljenostiD.distance() > 200 and senzor_udaljenostiL.distance()<200:
+        motor_pogon.run(500)
+        turn(400, 20,'d')
+
+    else:
+        motor_pogon.run(500)
+
+    wait(10)
+
+motor_pogon.stop()
+
