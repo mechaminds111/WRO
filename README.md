@@ -138,8 +138,10 @@ The following pictures show the robot from all sides:
 <br><br>
 <img src="ford1.jpeg" width="250"> <img src="ford2.jpeg" width="250"> <img src="ford front.jpeg" width="250"> 
 <img src="ford down.jpeg" width="250"> <img src="ford right.jpeg" width="250"> <img src="ford left.jpeg" width="250"> <img src="ford back.jpeg" width="250"> 
+The video of this robot driving is also uploaded on our YouTube channel: [First three laps around the track - Ford] (https://www.youtube.com/watch?v=bmhLn2NZVjs)
 <br>
 After some time working with LEGO robot we realized that, because of how the weight of the robot was distributed, we couldn't keep working with it and so we made a new, **Fourth**, LEGO robot which is our current one and the one we will be competing with. The following pictures are pictures of our current robot:
 <br>
 <img src="back last.jpeg" width="250"> <img src="front last.jpeg" width="250"> <img src="down last.jpeg" width="250"> 
 <img src="up last.jpeg" width="250"> <img src="left last.jpeg" width="250"> <img src="right last.jpeg" width="250">
+
