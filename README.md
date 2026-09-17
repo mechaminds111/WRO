@@ -78,7 +78,7 @@
 ## 2.Team
 ## 3.Vehicle Overview
 ## 4. Development history 
-Our robot went through several major design changes during the development process.
+Our robot went through several major design changes during the development process. 
 ### 4.1. Version 1 
 **About the robot** 
   - Our first robot was a custom-build vehicle made using 3D-prined and hand-build parts. It had several distance
@@ -171,7 +171,9 @@ sensors that helped us test the robot.
 ### 7.2 Program Structure
 ### 7.3 State Machine / Flowchart
 ### 7.4 Open Challenge Strategy
+  -  For the open challenge we decedided that robot is going to use two ______ distance/giro??? sensors to avoid all the walls and to turn in a right direction.
 ### 7.5 Obstacle Challenge Strategy
+  - For the obstacle challenge the strategy was to asamble a camera that 
 ### 7.6 Control Algorithms
 ### 7.7 Edge Cases and Failure Handling
 
