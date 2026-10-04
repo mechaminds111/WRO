@@ -1,5 +1,11 @@
 # MechaMinds-WRO 2026 Future Engineers
 # WRO Future Engineers - Engineering Documentation
+<p align="center">
+<img src="TEAM-PICTURES/school logo.png" width="200" > 
+<br>
+<em> Our school logo.</em>
+</p>
+
 ## Team Members
 - **Barbara Lukić**
 - **Nadia Kravčuk**
@@ -80,8 +86,6 @@ Our project is an autonomous vehicle that can navigate the competition field, de
 ## 2. Team
 We are the Croatian robotics team **MechaMinds** and our names are **Barbara Lukić**, **Ivano Koren** and **Nadia Kravčuk**. We come from Tin Ujević High School in Kutina. Our mentor's name is Damir Petravić. Together we worked on the design of the robot, programming and testing our robot.
 
-<img src="TEAM-PICTURES/school logo.png" width="200" > 
-<em> Our school logo.</em>
 
 
 <p align="right">
@@ -202,8 +206,30 @@ Our robot went through several major design changes during the development proce
 </p>
 
 ## 5. Current Robot
-The robot we will use for the competition in Zagreb is [4.2 Version 2](#42-version-2) the connection problem was solved. The solution can be found in [8.1 Major Problems and Solutions](#81-major-problems-and-solutions)
-This robot can now avoid obstacles and track walls using two distance sensors that are placed on each side of the robot. 
+The robot we will use for the competition in Zagreb is [4.2 Version 2](#42-version-2). Although this version originally had problems with an unstable Wi-Fi connection, the connection issue was later solved [9.1 Major Problems and Solutions](#91-major-problems-and-solutions) This robot can now avoid obstacles and track walls using two distance sensors that are placed on each side of the robot. 
+
+The robot uses a four-wheel chassis with rear-wheel drive and servo-controlled front steering.
+
+For navigation, the robot uses LiDAR distance sensors positioned near the front of the chassis. They measure the distance from nearby walls and allow the robot to follow the track, maintain a safe distance from the walls and avoid collisions.
+
+A Raspberry Pi Camera Module 3 is mounted at the front of the robot. The camera is used to detect colored obstacles and other important features of the competition field. By combining camera-based vision with LiDAR distance measurements, the robot can make navigation decisions in real time.
+
+
+| Front | Rear |
+|---|---|
+| <img src="DEVELOPMENT-HISTORY/version_2/final/front.jpeg" width="200"> | <img src="DEVELOPMENT-HISTORY/version_2/final/rear.jpeg" width="200"> |
+
+| Left | Right |
+|---|---|
+| <img src="DEVELOPMENT-HISTORY/version_2/final/left.jpeg" width="200"> | <img src="DEVELOPMENT-HISTORY/version_2/final/right.jpeg" width="200"> |
+
+| Top | Bottom |
+|---|---|
+| <img src="DEVELOPMENT-HISTORY/version_2/final/top.jpeg" width="200"> | <img src="DEVELOPMENT-HISTORY/version_2/final/bottom.jpeg" width="200"> |
+
+<p align="right">
+  <a href="#table-of-contents">⬆ Back to Table of Contents</a>
+</p>
 
 | Front | Rear |
 |---|---|
@@ -316,6 +342,8 @@ The robot uses a Raspberry Pi Camera Module 3 for visual perception of its surro
   demonstrating how the essential systems and connections are wired together.
 </p>
 
+<img src="BUILD-GUIDE/wiring/zicerobotaa.png" width="500" >
+
 
 <p align="right">
   <a href="#table-of-contents">⬆ Back to Table of Contents</a>
@@ -404,6 +432,8 @@ The robot software is written in C++. The code is developed and maintained withi
 <p align="right">
   <a href="#table-of-contents">⬆ Back to Table of Contents</a>
 </p>
+
+[Code](4_vožnja_u_krug_bez_prepreka.txt)
 
 ### 8.3 Open Challenge Strategy
 
