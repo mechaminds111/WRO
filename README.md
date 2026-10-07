@@ -231,21 +231,6 @@ A Raspberry Pi Camera Module 3 is mounted at the front of the robot. The camera 
   <a href="#table-of-contents">⬆ Back to Table of Contents</a>
 </p>
 
-| Front | Rear |
-|---|---|
-| <img src="DEVELOPMENT-HISTORY/version_2/final/front.jpeg" width="200"> | <img src="DEVELOPMENT-HISTORY/version_2/final/rear.jpeg" width="200"> |
-
-| Left | Right |
-|---|---|
-| <img src="DEVELOPMENT-HISTORY/version_2/final/left.jpeg" width="200"> | <img src="DEVELOPMENT-HISTORY/version_2/final/right.jpeg" width="200"> |
-
-| Top | Bottom |
-|---|---|
-| <img src="DEVELOPMENT-HISTORY/version_2/final/top.jpeg" width="200"> | <img src="DEVELOPMENT-HISTORY/version_2/final/bottom.jpeg" width="200"> |
-
-<p align="right">
-  <a href="#table-of-contents">⬆ Back to Table of Contents</a>
-</p>
 
 ## 6. Mobility & Mechanical Design
 ### 6.1 Chassis
@@ -429,11 +414,12 @@ The robot software is written in C++. The code is developed and maintained withi
 #### Code used for camera
 <img src="CODE/camera code/camera code.png" width="300">
 
+[Code](4_vožnja_u_krug_bez_prepreka.txt)
+
 <p align="right">
   <a href="#table-of-contents">⬆ Back to Table of Contents</a>
 </p>
 
-[Code](4_vožnja_u_krug_bez_prepreka.txt)
 
 ### 8.3 Open Challenge Strategy
 
@@ -520,13 +506,6 @@ All custom mechanical components and structural parts of the robot were designed
 <p align="right">
   <a href="#table-of-contents">⬆ Back to Table of Contents</a>
 </p>
-
-### 12.2 Assembly
-
-<p align="right">
-  <a href="#table-of-contents">⬆ Back to Table of Contents</a>
-</p>
-
 
 ## 13. Repository Structure
 This repository is organized into separate folders for documentation, hardware, software, media and testing. It makes it easier to locate files needed to understand and reproduce the robot.
