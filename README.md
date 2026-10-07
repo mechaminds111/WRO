@@ -70,7 +70,6 @@
 
 - [12. Build & Reproduction Guide](#12-build--reproduction-guide)
   - [12.1 Parts](#121-parts)
-  - [12.2 Assembly](#122-assembly)
 
 - [13. Repository Structure](#13-repository-structure)
 - [14. Engineering Journal](#14-engineering-journal)
