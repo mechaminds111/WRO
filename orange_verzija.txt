@@ -1,0 +1,886 @@
+  // =====================================================
+    // KONSTANTE
+    // =====================================================
+
+    const int LEFT_LIDAR = 0;   // PRETPOSTAVKA: 0 = lijevi lidar
+
+    // Servo:
+    // 1   = jako DESNO
+    // 59  = RAVNO
+    // 119 = jako LIJEVO
+
+
+    // =====================================================
+    // STANJA
+    // =====================================================
+
+    static bool startDone = false;
+
+    static int lastLeftDist = 180;
+
+    // Kamera
+    static bool cameraArmed = false;
+    static int lowOrangeCount = 0;
+    static int orangeCount = 0;
+
+    // Desni zavoj
+    static bool turningRight = false;
+    static int turnPhase = 0;
+    static unsigned long phaseStart = 0;
+
+    // Ponovno aktiviranje kamere nakon zavoja
+    static unsigned long rearmStart = 0;
+    static int clearOrangeCount = 0;
+
+    static unsigned long turnExitTime = 0;
+    static bool postTurnActive = false;
+
+    // Početni prag - kasnije podesiti prema logu orange
+    static double orangeTrigger = 0.0015;
+
+
+    // Pronalaženje lijevog zida
+    static int wallFoundCount = 0;
+
+    // Recovery u fazi 3
+    static bool wallRecovery = false;
+    static unsigned long wallRecoveryStart = 0;
+
+    static int leftAcquireCount = 0;
+    static bool leftWallAcquired = false;
+
+    static int lastAlignDist = 0;
+    static int alignStableCount = 0;
+    static int alignLostCount = 0;
+
+    static bool phase3Aligning = false;
+    static unsigned long phase3AlignStart = 0;
+
+    static bool afterRecoverySearch = false;
+
+    static int lostLeftCount = 0;
+
+    static bool buildPrinted = false;
+
+
+    // =====================================================
+    // BUILD
+    // =====================================================
+
+    if (!buildPrinted)
+    {
+        print(">>> BUILD ORANGE-RIGHT 2026-10-12 <<<\n\r");
+        buildPrinted = true;
+    }
+
+
+    // =====================================================
+    // START
+    // =====================================================
+
+    if (!startDone)
+    {
+        print(">>> ORANGE RIGHT LOOP START <<<\n\r");
+
+        motorsOn = true;
+
+        // Kotači ravno
+        mrm_servo->write(59, 1);
+
+        delay(500);
+
+        startDone = true;
+    }
+
+
+    // =====================================================
+    // LIJEVI LIDAR
+    // =====================================================
+
+    int leftRaw = mrm_lid_can_b->distance(LEFT_LIDAR);
+    int leftDist = leftRaw;
+
+    if (leftRaw > 0 && leftRaw < 700)
+    {
+        lastLeftDist = leftRaw;
+    }
+    else
+    {
+        leftDist = lastLeftDist;
+    }
+
+
+    // =====================================================
+    // KAMERA - DETEKCIJA NARANČASTE
+    //
+    // CMYK (0, 60, 100, 0)
+    // približno RGB (255, 102, 0)
+    // OpenCV HSV H približno 12
+    // =====================================================
+
+    double orangeRatio = 0.0;
+    bool cameraFrameOk = false;
+
+    camera->imageGet();
+
+    if (camera->newFrameAvailable && !camera->frame->empty())
+    {
+        cv::Mat frame = *camera->frame;
+
+        int w = frame.cols;
+        int h = frame.rows;
+
+        // Donja trećina slike
+        int roiY = (2 * h) / 3;
+        int roiH = h - roiY;
+
+        cv::Rect roi(0, roiY, w, roiH);
+
+        cv::Mat part = frame(roi);
+
+        cv::Mat hsv;
+        cv::Mat orangeMask;
+
+        // Kamera daje RGB
+        cv::cvtColor(part, hsv, cv::COLOR_RGB2HSV);
+
+        // NARANČASTA
+        // Početni raspon - podešavati prema stvarnom logu/kameri
+        cv::inRange(
+            hsv,
+            cv::Scalar(5, 120, 80),
+            cv::Scalar(20, 255, 255),
+            orangeMask
+        );
+
+        int orangePixels = cv::countNonZero(orangeMask);
+        int totalPixels = orangeMask.rows * orangeMask.cols;
+
+        if (totalPixels > 0)
+        {
+            orangeRatio =
+                (double)orangePixels /
+                (double)totalPixels;
+        }
+
+        cameraFrameOk = true;
+
+        camera->newFrameAvailable = false;
+    }
+
+
+    // =====================================================
+    // PRVO ARMIRANJE KAMERE
+    // =====================================================
+
+    if (
+        cameraFrameOk &&
+        !cameraArmed &&
+        !turningRight &&
+        rearmStart == 0
+    )
+    {
+        if (orangeRatio <= 0.003)
+        {
+            lowOrangeCount++;
+        }
+        else
+        {
+            lowOrangeCount = 0;
+        }
+
+        if (lowOrangeCount >= 5)
+        {
+            cameraArmed = true;
+
+            lowOrangeCount = 0;
+            orangeCount = 0;
+
+            print(">>> CAMERA ARMED <<<\n\r");
+        }
+    }
+
+
+    // =====================================================
+    // PONOVNO ARMIRANJE NAKON ZAVOJA
+    // =====================================================
+
+    if (
+        cameraFrameOk &&
+        !cameraArmed &&
+        !turningRight &&
+        rearmStart > 0
+    )
+    {
+        if (millis() - rearmStart >= 2000)
+        {
+            if (orangeRatio <= 0.002)
+            {
+                clearOrangeCount++;
+            }
+            else
+            {
+                clearOrangeCount = 0;
+            }
+
+            if (clearOrangeCount >= 5)
+            {
+                cameraArmed = true;
+
+                clearOrangeCount = 0;
+                orangeCount = 0;
+                lowOrangeCount = 0;
+
+                rearmStart = 0;
+
+                print(">>> CAMERA REARMED <<<\n\r");
+            }
+        }
+    }
+
+
+    // =====================================================
+    // DETEKCIJA NARANČASTE - START DESNOG ZAVOJA
+    // =====================================================
+
+    if (
+        cameraFrameOk &&
+        cameraArmed &&
+        !turningRight &&
+        rearmStart == 0
+    )
+    {
+        if (orangeRatio >= orangeTrigger)
+        {
+            orangeCount++;
+        }
+        else
+        {
+            orangeCount = 0;
+        }
+
+        if (orangeCount >= 1)
+        {
+            turningRight = true;
+
+            turnPhase = 1;
+            phaseStart = millis();
+
+            cameraArmed = false;
+
+            orangeCount = 0;
+            lowOrangeCount = 0;
+            clearOrangeCount = 0;
+
+            print(
+                ">>> NARANCASTA CRTA - START DESNOG ZAVOJA <<<\n\r"
+            );
+        }
+    }
+
+
+    // =====================================================
+    // DESNI ZAVOJ - STATE MACHINE
+    // =====================================================
+
+    if (turningRight)
+    {
+        // =================================================
+        // FAZA 1
+        // =================================================
+
+        if (turnPhase == 1)
+        {
+            print("PHASE1 SERVO=1\n\r");
+
+            // Zrcalno od 119
+            mrm_servo->write(1, 1);
+
+            go(35, 35);
+
+            if (millis() - phaseStart >= 3750)
+            {
+                turnPhase = 2;
+                phaseStart = millis();
+
+                mrm_servo->write(59, 1);
+
+                print(
+                    ">>> ZAVOJ FAZA 2 - UNATRAG <<<\n\r"
+                );
+            }
+        }
+
+
+        // =================================================
+        // FAZA 2
+        // =================================================
+
+        else if (turnPhase == 2)
+        {
+            unsigned long phaseTime = millis() - phaseStart;
+
+            // 1. STANI i pripremi kotače za rikverc
+            if (phaseTime < 400)
+            {
+                go(0, 0);
+
+                // zrcalno od 35
+                mrm_servo->write(85, 1);
+            }
+
+            // 2. RIKVERC
+            else if (phaseTime < 1100)
+            {
+                // zrcalno od 25
+                mrm_servo->write(95, 1);
+
+                go(-35, -35);
+            }
+
+            // 3. STANI i pripremi kotače jako DESNO
+            else if (phaseTime < 1400)
+            {
+                go(0, 0);
+
+                // zrcalno od 119
+                mrm_servo->write(1, 1);
+            }
+
+            // 4. FAZA 3
+            else
+            {
+                turnPhase = 3;
+                phaseStart = millis();
+
+                wallFoundCount = 0;
+                wallRecovery = false;
+
+                leftAcquireCount = 0;
+                leftWallAcquired = false;
+
+                print(
+                    ">>> ZAVOJ FAZA 3 - TRAZIM LIJEVI ZID <<<\n\r"
+                );
+            }
+        }
+
+
+        // =================================================
+        // FAZA 3
+        // =================================================
+
+        else if (turnPhase == 3)
+        {
+            unsigned long phaseTime = millis() - phaseStart;
+
+
+            // -------------------------------------------------
+            // 1. PRVO AKTIVNO TRAŽI LIJEVI ZID
+            // -------------------------------------------------
+
+            if (!leftWallAcquired)
+            {
+                if (afterRecoverySearch)
+                {
+                    // Nakon recoveryja:
+                    // ako smo preblizu LIJEVOM zidu -> DESNO
+                    if (leftRaw > 0 && leftRaw < 180)
+                    {
+                        // zrcalno od 90
+                        mrm_servo->write(30, 1);
+                    }
+                    else
+                    {
+                        // traži zid LIJEVO
+                        // zrcalno od 40
+                        mrm_servo->write(80, 1);
+                    }
+
+                    go(35, 35);
+                }
+                else
+                {
+                    // Prvi ulazak u fazu 3
+                    // zrcalno od 95
+                    mrm_servo->write(25, 1);
+
+                    go(40, 40);
+                }
+
+
+                if (leftRaw > 180 && leftRaw < 700)
+                {
+                    leftAcquireCount++;
+                }
+                else
+                {
+                    leftAcquireCount = 0;
+                }
+
+
+                if (leftAcquireCount >= 2)
+                {
+                    leftWallAcquired = true;
+
+                    leftAcquireCount = 0;
+                    afterRecoverySearch = false;
+
+                    phaseStart = millis();
+
+                    wallFoundCount = 0;
+                    wallRecovery = false;
+
+                    print(
+                        ">>> LIJEVI ZID UHVACEN - NASTAVLJAM FAZU 3 <<<\n\r"
+                    );
+                }
+            }
+
+
+            // -------------------------------------------------
+            // 2. LIJEVI ZID JE PRONAĐEN
+            // -------------------------------------------------
+
+            else
+            {
+                phaseTime = millis() - phaseStart;
+
+
+                // Ako izgubimo lijevi lidar
+                if (!wallRecovery && !phase3Aligning)
+                {
+                    if (leftRaw <= 0 || leftRaw >= 700)
+                    {
+                        lostLeftCount++;
+                    }
+                    else
+                    {
+                        lostLeftCount = 0;
+                    }
+                }
+
+
+                if (lostLeftCount >= 4)
+                {
+                    leftWallAcquired = false;
+
+                    leftAcquireCount = 0;
+                    wallFoundCount = 0;
+                    lostLeftCount = 0;
+
+                    afterRecoverySearch = true;
+
+                    phaseStart = millis();
+
+                    // traži LIJEVO
+                    mrm_servo->write(80, 1);
+                    go(35, 35);
+
+                    print(
+                        ">>> IZGUBLJEN LIJEVI ZID - TRAZIM PONOVNO <<<\n\r"
+                    );
+                }
+
+
+                // -------------------------------------------------
+                // PREBLIZU LIJEVOM ZIDU -> RECOVERY
+                // -------------------------------------------------
+
+                else if (
+                    !wallRecovery &&
+                    leftRaw > 0 &&
+                    leftRaw < 140
+                )
+                {
+                    wallRecovery = true;
+
+                    wallRecoveryStart = millis();
+
+                    wallFoundCount = 0;
+
+                    phase3Aligning = false;
+                    alignStableCount = 0;
+                    lastAlignDist = 0;
+
+                    print(
+                        ">>> PREBLIZU LIJEVOM ZIDU - RECOVERY <<<\n\r"
+                    );
+                }
+
+
+                // -------------------------------------------------
+                // RECOVERY
+                // -------------------------------------------------
+
+                if (wallRecovery)
+                {
+                    unsigned long recoveryTime =
+                        millis() - wallRecoveryStart;
+
+
+                    // RIKVERC
+                    if (recoveryTime < 800)
+                    {
+                        // zrcalno od 25
+                        mrm_servo->write(95, 1);
+
+                        go(-35, -35);
+                    }
+
+
+                    // STANI I ZAKRENI DESNO
+                    else if (recoveryTime < 1050)
+                    {
+                        go(0, 0);
+
+                        // zrcalno od 119
+                        mrm_servo->write(1, 1);
+                    }
+
+
+                    // KRENI NAPRIJED DESNO
+                    else if (recoveryTime < 1750)
+                    {
+                        mrm_servo->write(1, 1);
+
+                        go(30, 30);
+                    }
+
+
+                    // GOTOV RECOVERY
+                    else
+                    {
+                        wallRecovery = false;
+                        wallFoundCount = 0;
+
+
+                        // Ako nas je recovery vratio
+                        // na dobru udaljenost od LIJEVOG zida
+                        if (
+                            leftDist >= 150 &&
+                            leftDist <= 260
+                        )
+                        {
+                            phase3Aligning = false;
+
+                            turningRight = false;
+                            turnPhase = 0;
+
+                            leftWallAcquired = false;
+                            leftAcquireCount = 0;
+
+                            alignStableCount = 0;
+                            alignLostCount = 0;
+                            lostLeftCount = 0;
+
+                            afterRecoverySearch = false;
+
+                            orangeCount = 0;
+                            lowOrangeCount = 0;
+                            clearOrangeCount = 0;
+
+                            cameraArmed = false;
+
+                            rearmStart = millis();
+
+                            turnExitTime = millis();
+                            postTurnActive = true;
+
+                            mrm_servo->write(59, 1);
+
+                            print(
+                                ">>> RECOVERY GOTOV - PRATIM LIJEVI ZID <<<\n\r"
+                            );
+                        }
+                        else
+                        {
+                            leftWallAcquired = false;
+                            leftAcquireCount = 0;
+
+                            afterRecoverySearch = true;
+
+                            phaseStart = millis();
+                        }
+                    }
+                }
+
+
+                // -------------------------------------------------
+                // KRATKI POČETAK NAKON HVATANJA ZIDA
+                // -------------------------------------------------
+
+                else if (phaseTime < 500)
+                {
+                    // zrcalno od 115
+                    mrm_servo->write(5, 1);
+
+                    go(30, 30);
+                }
+
+
+                // -------------------------------------------------
+                // JOŠ SMO PREBLIZU CILJNOM PODRUČJU
+                // -------------------------------------------------
+
+                else if (
+                    leftRaw >= 100 &&
+                    leftRaw < 180
+                )
+                {
+                    // skreći DESNO
+                    mrm_servo->write(5, 1);
+
+                    go(30, 30);
+
+                    wallFoundCount = 0;
+                }
+
+
+                // -------------------------------------------------
+                // NORMALNO TRAŽENJE POLOŽAJA UZ LIJEVI ZID
+                // -------------------------------------------------
+
+                else
+                {
+                    // =============================================
+                    // ZAVRŠNO PORAVNAVANJE
+                    // =============================================
+
+                    if (phase3Aligning)
+                    {
+                        // zrcalno od 119
+                        mrm_servo->write(1, 1);
+
+                        go(30, 30);
+
+
+                        if (
+                            leftRaw <= 0 ||
+                            leftRaw >= 700
+                        )
+                        {
+                            alignLostCount++;
+                        }
+                        else
+                        {
+                            alignLostCount = 0;
+                        }
+
+
+                        if (alignLostCount >= 4)
+                        {
+                            phase3Aligning = false;
+
+                            leftWallAcquired = false;
+                            leftAcquireCount = 0;
+
+                            wallFoundCount = 0;
+
+                            alignStableCount = 0;
+                            alignLostCount = 0;
+
+                            afterRecoverySearch = true;
+
+                            phaseStart = millis();
+
+                            print(
+                                ">>> IZGUBLJEN ZID TIJEKOM PORAVNAVANJA - TRAZIM PONOVNO <<<\n\r"
+                            );
+                        }
+
+
+                        // Tvoja sadašnja verzija koristi 900 ms
+                        else if (
+                            millis() - phase3AlignStart >= 900
+                        )
+                        {
+                            if (
+                                leftRaw > 0 &&
+                                leftRaw < 800
+                            )
+                            {
+                                if (
+                                    leftDist >= 160 &&
+                                    leftDist <= 260 &&
+                                    leftDist >= lastAlignDist - 5
+                                )
+                                {
+                                    alignStableCount++;
+                                }
+                                else
+                                {
+                                    alignStableCount = 0;
+                                }
+
+                                lastAlignDist = leftDist;
+                            }
+                            else
+                            {
+                                alignStableCount = 0;
+                            }
+
+
+                            // Tek nakon stabilnih očitanja
+                            if (
+                                alignStableCount >= 3 ||
+                                (
+                                    millis() - phase3AlignStart >= 2900 &&
+                                    alignStableCount >= 2
+                                )
+                            )
+                            {
+                                phase3Aligning = false;
+
+                                turningRight = false;
+                                turnPhase = 0;
+
+                                wallFoundCount = 0;
+
+                                orangeCount = 0;
+                                lowOrangeCount = 0;
+                                clearOrangeCount = 0;
+
+                                wallRecovery = false;
+
+                                cameraArmed = false;
+
+                                rearmStart = millis();
+
+                                turnExitTime = millis();
+                                postTurnActive = true;
+
+                                mrm_servo->write(59, 1);
+
+                                print(
+                                    ">>> PORAVNAT - PRATIM LIJEVI ZID <<<\n\r"
+                                );
+                            }
+                        }
+                    }
+
+
+                    // =============================================
+                    // JOŠ NISMO U ZAVRŠNOM PORAVNAVANJU
+                    // =============================================
+
+                    else
+                    {
+                        // zrcalno od 115
+                        mrm_servo->write(5, 1);
+
+                        go(30, 30);
+
+
+                        if (
+                            leftRaw >= 180 &&
+                            leftRaw <= 500
+                        )
+                        {
+                            wallFoundCount++;
+                        }
+                        else
+                        {
+                            wallFoundCount = 0;
+                        }
+
+
+                        // 3 uzastopna dobra očitanja
+                        if (wallFoundCount >= 3)
+                        {
+                            phase3Aligning = true;
+
+                            phase3AlignStart = millis();
+
+                            lastAlignDist = leftDist;
+
+                            alignStableCount = 0;
+                            alignLostCount = 0;
+
+                            wallFoundCount = 0;
+
+                            print(
+                                ">>> LIJEVI ZID PRONADJEN - PORAVNAVAM <<<\n\r"
+                            );
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // =====================================================
+    // NORMALNO PRAĆENJE LIJEVOG ZIDA
+    // =====================================================
+
+    else
+    {
+        motorsOn = true;
+
+
+        // Kratko nakon izlaska iz zavoja
+        if (
+            postTurnActive &&
+            millis() - turnExitTime < 700
+        )
+        {
+            // Ako smo preblizu lijevom zidu,
+            // skreći DESNO
+            if (leftDist < 180)
+            {
+                mrm_servo->write(30, 1);
+            }
+            else
+            {
+                mrm_servo->write(59, 1);
+            }
+
+            go(35, 35);
+        }
+
+
+        // Normalno praćenje
+        else
+        {
+            postTurnActive = false;
+
+
+            if (leftDist < 160)
+            {
+                // Preblizu LIJEVOM zidu -> DESNO
+                mrm_servo->write(30, 1);
+            }
+            else if (leftDist <= 210)
+            {
+                // Dobra udaljenost -> RAVNO
+                mrm_servo->write(59, 1);
+            }
+            else
+            {
+                // Predaleko od LIJEVOG zida -> LIJEVO
+                mrm_servo->write(95, 1);
+            }
+
+            go(30, 30);
+        }
+    }
+
+
+    // =====================================================
+    // ISPIS
+    // =====================================================
+
+    print(
+        "RAW:%i L:%i ORANGE:%.6f armed:%i orangeCount:%i turn:%i phase:%i\n\r",
+        leftRaw,
+        leftDist,
+        orangeRatio,
+        cameraArmed,
+        orangeCount,
+        turningRight,
+        turnPhase
+    );
+
+
+    delay(200);
